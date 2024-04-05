@@ -1,0 +1,25 @@
+version: '3.7'
+
+services:
+    wordpress:
+        build: .
+        restart: always
+        ports:
+            - 8080:80
+        environment:
+            WORDPRESS_DB_HOST: db
+            WORDPRESS_DB_USER: rigel
+            WORDPRESS_DB_PASSWORD: rigel123
+            WORDPRESS_DB_NAME: wpdb
+           
+    db:
+        image: mysql:5.7
+        restart: always
+        environment:
+            MYSQL_DATABASE: wpdb
+            MYSQL_USER: rigel
+            MYSQL_PASSWORD: rigel123
+            MYSQL_RANDOM_ROOT_PASSWORD: '1'
+            
+
+      
